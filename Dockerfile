@@ -7,7 +7,7 @@ RUN useradd -c "Jenkins user" -d $HOME -m jenkins
 RUN apt-get update && apt-get install --no-install-recommends -y -q  \
   build-essential g++ flex bison gperf ruby perl \
   libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
-  libpng-dev libjpeg-dev python libx11-dev libxext-dev bzip2 npm
+  libpng-dev libjpeg-dev python libx11-dev libxext-dev bzip2 nodejs npm
 RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar http://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/2.52/remoting-2.52.jar \
   && chmod 755 /usr/share/jenkins \
   && chmod 644 /usr/share/jenkins/slave.jar
