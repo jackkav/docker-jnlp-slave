@@ -22,7 +22,6 @@ RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar http://repo.jenkins-ci
   && chmod 644 /usr/share/jenkins/slave.jar
 
 COPY jenkins-slave /usr/local/bin/jenkins-slave
-RUN npm i -g phantomjs-prebuilt
 
 VOLUME /home/jenkins
 WORKDIR /home/jenkins
