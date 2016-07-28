@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y -q  \
   libsqlite3-dev libfontconfig1 libfontconfig1-dev libicu-dev libfreetype6 libfreetype6-dev libssl-dev \
   libpng-dev libjpeg-dev python libx11-dev libxext-dev bzip2 npm
   
-RUN export PHANTOM_JS="phantomjs-1.9.8-linux-x86_64" && \
-    wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2 && \
+RUN export PHANTOM_JS="phantomjs-2.1.1-linux-x86_64" && \
+    wget http://cnpmjs.org/downloads/$PHANTOM_JS.tar.bz2 && \
     mv $PHANTOM_JS.tar.bz2 /usr/local/bin && \
     cd /usr/local/bin && \
     tar xvjf $PHANTOM_JS.tar.bz2 && \
