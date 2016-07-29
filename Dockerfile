@@ -3,7 +3,7 @@ FROM java:8-jdk
 MAINTAINER Nicolas De Loof <nicolas.deloof@gmail.com>
 
 ENV HOME /home/jenkins
-RUN useradd -c "Jenkins user" -d $HOME -m jenkins
+RUN useradd -c "Jenkins user" -d $HOME -m jenkins -p jenkins && usermod -a -G sudo jenkins
 
 RUN apt-get update && apt-get install --no-install-recommends -y -q  \
   build-essential chrpath libssl-dev libxft-dev g++ flex bison gperf ruby perl \
