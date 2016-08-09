@@ -3,7 +3,7 @@ FROM java:8-jdk
 MAINTAINER Nicolas De Loof <nicolas.deloof@gmail.com>
 
 ENV HOME /home/jenkins
-RUN useradd -c "Jenkins user" -d $HOME -m jenkins -p jenkins && usermod -a -G sudo jenkins
+RUN useradd -c "Jenkins user" -d $HOME -m jenkins && echo "jenkins:jenkins" | chpasswd && chown -R jenkins.jenkins $HOME
 
 RUN apt-get update && apt-get install --no-install-recommends -y -q  \
   build-essential chrpath libssl-dev libxft-dev g++ flex bison gperf ruby perl \
@@ -21,6 +21,10 @@ RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar http://repo.jenkins-ci
   && chmod 644 /usr/share/jenkins/slave.jar
 
 COPY jenkins-slave /usr/local/bin/jenkins-slave
+
+
+RUN curl https://install.meteor.com/ | sh && export PATH=$PATH:$HOME/.meteor && chown -R jenkins.jenkins $HOME/.meteor
+
 
 VOLUME /home/jenkins
 WORKDIR /home/jenkins
