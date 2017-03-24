@@ -5,8 +5,8 @@ MAINTAINER Nicolas De Loof <nicolas.deloof@gmail.com>
 ENV HOME /home/jenkins
 RUN useradd -c "Jenkins user" -d $HOME -m jenkins && echo "jenkins:jenkins" | chpasswd && chown -R jenkins.jenkins $HOME
 
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - 
-  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - 
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - \
+  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
 RUN apt-get update && apt-get install --no-install-recommends -y -q  \
